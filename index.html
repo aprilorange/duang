@@ -1,0 +1,25 @@
+<!DOCTYPE html><html><head><title></title><link href="./duang.css" rel="stylesheet"><style>.main {
+  max-width: 555px;
+  margin: 0 auto;
+}
+.input {
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  padding: 5px 10px;
+  outline: none;
+}
+.input:focus {
+  border-color: #ccc;
+}</style></head><body><div class="main"><div class="input-parent"><input id="username" class="input"></div><div class="input-parent"><textarea id="content" class="input"></textarea></div></div><script src="//upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.3.min.js"></script><script src="./duang.js"></script><script>$(function() {
+  $('body')
+    .on('keydown change', '#username', function() {
+      if($(this).val().length < 20) {
+        duang('#username').error('Your username is not valid', 'right', 'hint--no-shadow');
+      } 
+    })
+    .on('keydown', '#content', function() {
+      if($(this).val().length > 2) {
+        duang('#content').error('made!')
+      }
+    })
+})</script></body></html>

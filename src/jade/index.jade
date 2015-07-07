@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    title!=title
+    link(href="./duang.css" rel="stylesheet")
+    style.
+      .main {
+        max-width: 555px;
+        margin: 0 auto;
+      }
+      .input {
+        border: 1px solid #e2e2e2;
+        border-radius: 3px;
+        padding: 5px 10px;
+        outline: none;
+      }
+      .input:focus {
+        border-color: #ccc;
+      }
+  body
+    .main
+      .input-parent
+        input.input#username
+      .input-parent
+        textarea.input#content
+    script(src="//upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.3.min.js")
+    script(src="./duang.js")
+    script.
+      $(function() {
+        $('body')
+          .on('keydown change', '#username', function() {
+            if($(this).val().length < 20) {
+              duang('#username').error('Your username is not valid', 'right', 'hint--no-shadow');
+            } 
+          })
+          .on('keydown', '#content', function() {
+            if($(this).val().length > 2) {
+              duang('#content').error('made!')
+            }
+          })
+      })
+      
