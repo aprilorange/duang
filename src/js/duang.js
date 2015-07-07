@@ -12,26 +12,24 @@
     constructor: duang,
     wildcard: function(type, text, position, classNames) {
       position = position || 'right';
-      this.element.each(function(i, element) {
-        element = $(element);
-        var el = element.parent();
-        if (el.attr('id') != 'duang-parent' && !this.__wrapped) {
-          element.wrap('<div id="duang-parent"></div>');
-          el = element.parent();
-          this.__wrapped = true;
-        }
-        el.removeClass(function(index, css) {
-          return (css.match(/(^|\s)hint--\S+/g) || []).join(' ');
-        })
-        el
-          .attr('data-hint', text)
-          .addClass('hint--' + position)
-          .addClass('hint--' + type)
-          .addClass('hint--duang')
-        if (classNames) {
-          el.addClass(classNames);
-        }
+      var el = this.element.parent();
+      if(el.attr('id') != 'duang-parent' && !this.__wrapped) {
+        console.log(this.element)
+        this.element.wrap('<div id="duang-parent"></div>');
+        el = this.element.parent();
+        this.__wrapped = true;
+      }
+      el.removeClass(function(index, css) {
+        return (css.match(/(^|\s)hint--\S+/g) || []).join(' ');
       })
+      el
+        .attr('data-hint', text)
+        .addClass('hint--' + position)
+        .addClass('hint--' + type)
+        .addClass('hint--duang')
+      if(classNames) {
+        el.addClass(classNames);
+      }
       return this;
     },
     rip: function() {
